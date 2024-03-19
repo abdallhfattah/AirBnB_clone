@@ -5,7 +5,7 @@
 import uuid
 from datetime import datetime
 
-import engine
+import models
 
 
 class BaseModel:
@@ -42,13 +42,13 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             # Saving the new object into storage
-            engine.storage.new(self)
+            models.storage.new(self)
 
     def save(self):
         """Updates `updated_at` with the current datetime"""
         self.updated_at = datetime.now()
         # hitting the change to be in storage
-        engine.storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """
